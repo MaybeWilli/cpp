@@ -1,1 +1,1 @@
-This is my directory.
+This is my learning project.
