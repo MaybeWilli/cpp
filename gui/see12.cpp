@@ -46,4 +46,20 @@ int main (){
 	win.attach(r);
 	win.set_label("Windowju kaisen");
 	win.wait_for_button();
+	
+	r.set_fill_color(Color::yellow);
+	poly.set_style(Line_style(Line_style::dash, 4));
+	win.set_label("Re: Window");
+	win.wait_for_button();
+	
+	Text t(Point(150, 150), "Yare yare daze.");
+	win.attach(t);
+	win.set_label("Jojo's bizzare window");
+	win.wait_for_button();
+	
+	Image ii{Point{100, 50}, "image1.jpeg"};
+	win.attach(ii);
+	win.set_label("A Certain Scientific Window");
+	win.wait_for_button();
+	
 }
