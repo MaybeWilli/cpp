@@ -21,30 +21,27 @@ int find(vector<int>source, int num) {
 	int i2 = source.size()-1;
 	int current = num;
 	
+	if (source.size()==0) {
+		return -1;
+	}
 	
 	while (true) {
-		if (source[i1]==current) {
-			return i1;
+		if (i1==i2) {
+			if (source[i1]>=num&&i1<source.size()-1) {
+				return i1;
+			}
+			else if (i1==source.size()-1&&source[i1]>num) {
+				return i1;
+			}
+			else {
+				return -1;
+			}
 		}
-		else if (source[i2]==current) {
-			return i2;
+		else if (source[(i1+i2)/2]>=num) {
+			i2 = (i1+i2)/2;
 		}
-		else if (source[(i1+i2)/2]==current) {
-			return (i1+i2)/2;
-		}
-		else if (i2-i1==1&&current<source[i1]) {
-			return i1;
-		}
-		else if (i2-i1==1&&source[i1]<=current<=source[i2]) {
-			return i2;
-		}
-		else if (source[(i2+i1)/2]>current) {
-			i2 = (i2+i1)/2;
-		}
-		else if (source[(i2+i1)/2]<current) {
-			//cout<<"So apparently source[i] is "<<source[(i2+i1)/2]<<endl;
-			//if ((source[(i2+i1)/2]<5)) {cout<<"Why?";}
-			i1 = (i2+i1)/2;
+		else if (source[(i1+i2)/2]<num) {
+			i1 = (i1+i2)/2+1;
 		}
 		else {}
 	}
@@ -52,9 +49,15 @@ int find(vector<int>source, int num) {
 
 void quick_sort(vector<int>source, vector<int>&result){
 	int current;
-	
-	for (int i = 1; i<source.size(); ++i) {
+	for (int i=0; i<source.size(); i++) {
 		current = source[i];
+		int position = find(result, current);
+		if (position==-1) {
+			result.push_back(current);
+		}
+		else {
+			result.insert(result.begin()+position, current);
+		}
 	}
 		
 }
@@ -80,11 +83,11 @@ int main() {
 	}
 	cout<<"A whole new homework:"<<endl;
 
-	vector <int> test1 = {1, 3, 7, 6};
-	vector <int> test2;
-	/*quick_sort(test1, test2);
-	for (ptr = test2.begin(); ptr < test2.end(); ptr++){
+	
+	quick_sort(numbers, numbers3);
+	cout<<"Did it work?"<<endl;
+	for (ptr = numbers3.begin(); ptr < numbers3.end(); ptr++){
 		cout<<*ptr<<endl;
-	}*/
-	cout<<test2[0];
+	}//*/
+	//cout<<find(test1, 11);
 }
