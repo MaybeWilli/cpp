@@ -222,10 +222,10 @@ struct Group : Shape {
 
 private:
     Vector_ref<Shape> shapes;
-    Shape::number_of_points;
-    Shape::point;
-    Shape::add;
-    Shape::set_point;
+    using Shape::number_of_points;
+    using Shape::point;
+    using Shape::add;
+    using Shape::set_point;
 };
 
 //------------------------------------------------------------------------------
@@ -456,7 +456,7 @@ private:
 struct Octagon : Regular_polygon {
     Octagon(Point cc, int rr) : Regular_polygon(cc,8,rr) { }
 private:
-    Regular_polygon::n_edges;
+    using Regular_polygon::n_edges;
 };
 
 //------------------------------------------------------------------------------
@@ -568,7 +568,7 @@ struct Striped_circle : Circle {
 struct Immobile_circle : Circle {
     Immobile_circle(Point p, int rr) : Circle(p,rr) { }
 private:
-    Circle::move;
+    using Circle::move;
 };
 
 //------------------------------------------------------------------------------
@@ -704,7 +704,7 @@ struct Hat_smiley : Smiley {
     void set_color(Color c);
 private:
     Polygon hat;
-    Smiley::set_radius;    // shouldn't be used here, too annoying
+    using Smiley::set_radius;    // shouldn't be used here, too annoying
 };
 
 //------------------------------------------------------------------------------
@@ -712,7 +712,7 @@ private:
 struct Frowny : Circle_face {
     Frowny(Point p, int rr);
 private:
-    Circle_face::set_radius;    // children of Frowny shouldn't be able to use it
+    using Circle_face::set_radius;    // children of Frowny shouldn't be able to use it
 };
 
 //------------------------------------------------------------------------------
